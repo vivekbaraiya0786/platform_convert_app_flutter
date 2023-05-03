@@ -6,17 +6,17 @@ class AppTheme {
     colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.light,
       seedColor: Colors.blue,
-      inversePrimary: Colors.blue,
-      secondary: Colors.red,
+      secondary: Colors.deepPurple,
+
+
     ),
   );
 
   static ThemeData Darktheme = ThemeData(
     useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(
-      seedColor: Colors.blue,
+      seedColor: Colors.deepPurple,
       brightness: Brightness.dark,
-      inversePrimary: Colors.blue,
       secondary: Colors.red,
     ),
   );

@@ -1,20 +1,18 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
+
 class Contact{
   String fullName;
   String chat;
   String phoneNumber;
   File? image;
 
+  DateTime? PickedDate;
+  TimeOfDay? time;
 
 
-  Contact({required this.fullName,required this.chat,required this.phoneNumber,this.image,});
+
+  Contact({required this.fullName,required this.chat,required this.phoneNumber,this.image,this.PickedDate,this.time});
 }
 
-class Profile{
-  String profliefullName;
-  String profilebio;
-  File? image1;
-
-  Profile({required this.profliefullName,required this.profilebio,this.image1});
-}

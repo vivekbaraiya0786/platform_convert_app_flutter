@@ -6,7 +6,10 @@ import 'package:platform_convert_app/views/component/callspage.dart';
 import 'package:platform_convert_app/views/component/chatpage.dart';
 import 'package:platform_convert_app/views/component/personpage.dart';
 import 'package:platform_convert_app/views/component/settingspage.dart';
+import 'package:platform_convert_app/views/utils/apptheme.dart';
 import 'package:provider/provider.dart';
+
+import '../../controller/provider/changethememodeprovider.dart';
 
 class homepage extends StatefulWidget {
   const homepage({Key? key}) : super(key: key);
@@ -16,12 +19,12 @@ class homepage extends StatefulWidget {
 }
 
 class _homepageState extends State<homepage> {
-  File? image;
+
   DateTime initialDate = DateTime.now();
   DateTime? pickedDate;
-  bool profileswitch = false;
-  bool themeswitch = false;
+
   Color deepPurpple = Colors.deepPurple;
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +32,11 @@ class _homepageState extends State<homepage> {
     double h = size.height;
     double w = size.width;
 
-    return (Provider.of<ChangeAppThemeProvider>(context)
+    if ((Provider.of<ChangeAppThemeProvider>(context)
                 .changeAppModel
                 .AppthemeMode ==
-            false)
-        ? GestureDetector(
+            false)) {
+      return GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
             child: DefaultTabController(
               length: 4,
@@ -41,23 +44,42 @@ class _homepageState extends State<homepage> {
                 resizeToAvoidBottomInset: false,
                 appBar: AppBar(
                   bottom: TabBar(
+
                     indicatorColor: deepPurpple,
-                    tabs: [
+                    unselectedLabelColor:Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.black,
+                    labelColor: deepPurpple,
+                    tabs: const[
                       Tab(
-                        icon: Icon(Icons.person_add_alt,
-                            color: deepPurpple, size: 25),
+                        icon: Icon(
+                          Icons.person_add_alt,
+                          size: 25,
+                        ),
                       ),
                       Tab(
-                        child: Text("CHATS",
-                            style: TextStyle(color: deepPurpple, fontSize: 13)),
+                        child: Text(
+                          "CHATS",
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
                       ),
                       Tab(
-                        child: Text("CALLS",
-                            style: TextStyle(color: deepPurpple, fontSize: 13)),
+                        child: Text(
+                          "CALLS",
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
                       ),
                       Tab(
-                        child: Text("SETTINGS",
-                            style: TextStyle(color: deepPurpple, fontSize: 13)),
+                        child: Text(
+                          "SETTINGS",
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -88,12 +110,14 @@ class _homepageState extends State<homepage> {
                 ),
               ),
             ),
-          )
-        : CupertinoTabScaffold(
+          );
+    } else {
+      return CupertinoTabScaffold(
             tabBar: CupertinoTabBar(
+              activeColor: Colors.blue,
               items: const [
                 BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.person_badge_plus),
+                  icon: Icon(CupertinoIcons.person_badge_plus,),
                   label: 'PERSON',
                 ),
                 BottomNavigationBarItem(
@@ -115,7 +139,15 @@ class _homepageState extends State<homepage> {
                 builder: (context) {
                   return CupertinoPageScaffold(
                     navigationBar: CupertinoNavigationBar(
-                      middle: const Text("Platform Converter"),
+                      backgroundColor: (Provider.of<ChangeThemeProvider>(context).changethemeModel.isDark)
+                          ? CupertinoColors.black
+                          : CupertinoColors.white,
+                      middle:  Text("Platform Converter",
+                      style: TextStyle(
+                        color: (Provider.of<ChangeThemeProvider>(context).changethemeModel.isDark)
+                            ? CupertinoColors.white
+                            : CupertinoColors.black,
+                      )),
                       trailing: CupertinoSwitch(
                         value: Provider.of<ChangeAppThemeProvider>(context)
                             .changeAppModel
@@ -145,5 +177,6 @@ class _homepageState extends State<homepage> {
               );
             },
           );
+    }
   }
 }
