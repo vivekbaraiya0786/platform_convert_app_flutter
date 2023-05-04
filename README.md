@@ -4,7 +4,7 @@ A new Flutter project.
 
 <img align = "left" src="https://user-images.githubusercontent.com/126376629/236149363-0492ab12-e7bf-4b40-8fc0-020db7990bd2.png" width="220px">
 <img align = "left" src="https://user-images.githubusercontent.com/126376629/236149379-aeccf17a-2749-433a-9f58-3abe2c0adf44.png" width="220px">
-<img align = "left" src="https://user-images.githubusercontent.com/126376629/236149381-3a7026f5-39d0-455a-a1ea-fc04bfea23d6.png" width="220px">
+<img  src="https://user-images.githubusercontent.com/126376629/236149381-3a7026f5-39d0-455a-a1ea-fc04bfea23d6.png" width="220px">
 
 <img align = "left" src="https://user-images.githubusercontent.com/126376629/236149386-991bfd0c-25ac-471b-9d2a-11550b1fcb8c.png" width="220px">
 <img align = "left" src="https://user-images.githubusercontent.com/126376629/236149395-088c5d38-37e2-4470-a11b-589ca887c5e0.png" width="220px">
