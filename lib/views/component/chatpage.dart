@@ -49,7 +49,8 @@ class _chat_pageState extends State<chat_page> {
                         title: Text(contactList.allContacts[index].fullName),
                         subtitle: Text(contactList.allContacts[index].chat),
                         // trailing: Text("${PickedDate[index]?.day} "),
-                        trailing: Text("${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year},${TimeOfDay.now().hour}:${TimeOfDay.now().minute}"),
+                        trailing: Text(
+                            "${contactList.allContacts[index].Dates.toString()} / ${contactList.allContacts[index].Months.toString()} / ${contactList.allContacts[index].Years.toString()} , ${contactList.allContacts[index].Minits.toString()} : ${contactList.allContacts[index].Hours.toString()}"),
                         onTap: () {
                           showModalBottomSheet(
                               context: context,
@@ -69,11 +70,10 @@ class _chat_pageState extends State<chat_page> {
                                             context: context,
                                             builder: (context) {
                                               return AlertDialog(
-                                                title: const Text("CHOOSE PHOTOS"),
+                                                title:
+                                                    const Text("CHOOSE PHOTOS"),
                                                 actionsAlignment:
                                                     MainAxisAlignment.center,
-                                                actionsPadding:
-                                                    const EdgeInsets.all(14),
                                                 actions: [
                                                   GestureDetector(
                                                     onTap: () async {
@@ -99,6 +99,9 @@ class _chat_pageState extends State<chat_page> {
                                                       CupertinoIcons.camera,
                                                       size: 75,
                                                     ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: w * 0.1,
                                                   ),
                                                   GestureDetector(
                                                     onTap: () async {
@@ -344,7 +347,6 @@ class _chat_pageState extends State<chat_page> {
                           return CupertinoListTile(
                             padding: const EdgeInsets.all(14),
                             leadingSize: 55,
-                            leadingToTitle: 30,
                             leading: CircleAvatar(
                               radius: 50,
                               foregroundImage:
@@ -353,17 +355,23 @@ class _chat_pageState extends State<chat_page> {
                                           contactList.allContacts[index].image!)
                                       : null,
                             ),
-                            title: Text(contactList.allContacts[index].fullName,
+                            title: Text(
+                              contactList.allContacts[index].fullName,
                               style: TextStyle(
-                              fontSize: 20,
-                              color: (Provider.of<ChangeThemeProvider>(context).changethemeModel.isDark)
-                                  ? CupertinoColors.white
-                                  : CupertinoColors.black,
-                            ),),
+                                fontSize: 20,
+                                color:
+                                    (Provider.of<ChangeThemeProvider>(context)
+                                            .changethemeModel
+                                            .isDark)
+                                        ? CupertinoColors.white
+                                        : CupertinoColors.black,
+                              ),
+                            ),
                             subtitle: Text(contactList.allContacts[index].chat,
                                 style: const TextStyle(
                                   fontSize: 16,
                                 )),
+                            trailing: Text("${contactList.allContacts[index].Dates.toString()} / ${contactList.allContacts[index].Months.toString()} / ${contactList.allContacts[index].Years.toString()} , ${contactList.allContacts[index].Minits.toString()} : ${contactList.allContacts[index].Hours.toString()}"),
                             onTap: () {
                               showCupertinoModalPopup(
                                 context: context,

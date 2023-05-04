@@ -4,29 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:platform_convert_app/modals/changeappmode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ChangeAppThemeProvider extends ChangeNotifier{
-  ChangeAppModel changeAppModel = ChangeAppModel(AppthemeMode: false);
-
-  changeApp()async{
-    changeAppModel.AppthemeMode = ! changeAppModel.AppthemeMode;
-   notifyListeners();
-  }
-}
-
-//
 // class ChangeAppThemeProvider extends ChangeNotifier{
-//   ChangeAppModel changeAppModel;
-//
-//   ChangeAppThemeProvider({required this.changeAppModel});
-//
+//   ChangeAppModel changeAppModel = ChangeAppModel(AppthemeMode: false);
 //
 //   changeApp()async{
-//     changeAppModel.AppthemeMode = !changeAppModel.AppthemeMode;
-//    SharedPreferences prefs = await SharedPreferences.getInstance();
-//    prefs.setBool('appthemechange', changeAppModel.AppthemeMode);
+//     changeAppModel.AppthemeMode = ! changeAppModel.AppthemeMode;
 //    notifyListeners();
 //   }
 // }
+
+//
+class ChangeAppThemeProvider extends ChangeNotifier{
+  ChangeAppModel changeAppModel;
+
+  ChangeAppThemeProvider({required this.changeAppModel});
+
+
+  changeApp()async{
+    changeAppModel.AppthemeMode = !changeAppModel.AppthemeMode;
+   SharedPreferences prefs = await SharedPreferences.getInstance();
+   prefs.setBool('appthemechange', changeAppModel.AppthemeMode);
+   notifyListeners();
+  }
+}
 
 
 

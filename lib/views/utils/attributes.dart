@@ -45,4 +45,3 @@ DateTime? PickedDate;
 
 TimeOfDay? PickedTime;
 TimeOfDay Time = TimeOfDay.now();
-

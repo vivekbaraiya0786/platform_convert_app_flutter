@@ -6,6 +6,7 @@ import 'package:platform_convert_app/views/utils/apptheme.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'controller/provider/changethememodeprovider.dart';
+import 'modals/changeappmode.dart';
 import 'modals/changethememode.dart';
 
 void main() async {
@@ -13,16 +14,15 @@ void main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
   bool isdarktheme = prefs.getBool('isdark') ?? false;
-  //
-  // bool apptheme = prefs.getBool('appthemechange') ?? false;
+  bool apptheme = prefs.getBool('appthemechange') ?? false;
 
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) =>  ChangeAppThemeProvider(),
-          // create: (context) => ChangeAppThemeProvider(
-          //     changeAppModel: ChangeAppModel(AppthemeMode: apptheme)),
+          // create: (context) =>  ChangeAppThemeProvider(),
+          create: (context) => ChangeAppThemeProvider(
+              changeAppModel: ChangeAppModel(AppthemeMode: apptheme)),
         ),
         ChangeNotifierProvider(
           create: (context) => ChangeThemeProvider(
@@ -34,35 +34,35 @@ void main() async {
       ],
       builder: (context, child) {
         return (Provider.of<ChangeAppThemeProvider>(context)
-                    .changeAppModel
-                    .AppthemeMode ==
-                false)
+            .changeAppModel
+            .AppthemeMode ==
+            false)
             ? MaterialApp(
-                debugShowCheckedModeBanner: false,
-                theme: AppTheme.lighttheme,
-                darkTheme: AppTheme.Darktheme,
-                themeMode: (Provider.of<ChangeThemeProvider>(context)
-                            .changethemeModel
-                            .isDark ==
-                        false)
-                    ? ThemeMode.light
-                    : ThemeMode.dark,
-                routes: {
-                  '/': (context) => const homepage(),
-                },
-              )
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.lighttheme,
+          darkTheme: AppTheme.Darktheme,
+          themeMode: (Provider.of<ChangeThemeProvider>(context)
+              .changethemeModel
+              .isDark ==
+              false)
+              ? ThemeMode.light
+              : ThemeMode.dark,
+          routes: {
+            '/': (context) => const homepage(),
+          },
+        )
             : CupertinoApp(
           theme: MaterialBasedCupertinoThemeData(
-            materialTheme: (Provider.of<ChangeThemeProvider>(context,
-                listen: false).changethemeModel.isDark)
-                ?AppTheme.Darktheme
-                :AppTheme.lighttheme
+              materialTheme: (Provider.of<ChangeThemeProvider>(context,
+                  listen: false).changethemeModel.isDark)
+                  ?AppTheme.Darktheme
+                  :AppTheme.lighttheme
           ),
-                debugShowCheckedModeBanner: false,
-                routes: {
-                  '/': (ctx) => const homepage(),
-                },
-              );
+          debugShowCheckedModeBanner: false,
+          routes: {
+            '/': (ctx) => const homepage(),
+          },
+        );
       },
     ),
   );
