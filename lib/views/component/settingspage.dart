@@ -16,12 +16,7 @@ class settingpage extends StatefulWidget {
 }
 
 class _settingpageState extends State<settingpage> {
-  File? image;
-  bool profileswitch = false;
-  bool themeswitch = false;
-  int i = 0;
-  DateTime initialdatevalue = DateTime.now();
-  DateTime? pickedDate;
+
   Color deepPurpple = Colors.deepPurple;
 
   @override

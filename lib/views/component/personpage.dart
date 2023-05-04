@@ -256,11 +256,11 @@ class _personpageState extends State<personpage> {
 
                         // initialEntryMode:DatePickerEntryMode.calendarOnly,
                       );
-                        setState(() {
-                          if (date != null) {
-                            PickedDate = date;
-                          }
-                        });
+                      setState(() {
+                        if (date != null) {
+                          PickedDate = date;
+                        }
+                      });
                     },
                     icon: Icon(
                       Icons.calendar_month_rounded,
@@ -539,11 +539,9 @@ class _personpageState extends State<personpage> {
                               ),
                             )
                                 : Text(
-                              "Pick Date",
+                              "  Pick Date",
                               style: TextStyle(
-                                  color: (Provider.of<ChangeAppThemeProvider>(context).changeAppModel.AppthemeMode)
-                                      ? CupertinoColors.white
-                                      : CupertinoColors.black
+                                  color:  CupertinoColors.inactiveGray,
                               ),
                             ),
                           ],
@@ -592,9 +590,7 @@ class _personpageState extends State<personpage> {
                                 ? Text(
                               "Pick Time",
                               style: TextStyle(
-                                  color: (Provider.of<ChangeAppThemeProvider>(context).changeAppModel.AppthemeMode)
-                                      ? CupertinoColors.white
-                                      : CupertinoColors.black),
+                                  color:  CupertinoColors.inactiveGray,),
                             )
                                 : (PeriodName == "AM")
                                 ? Text(

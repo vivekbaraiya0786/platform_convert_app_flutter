@@ -327,7 +327,13 @@ class _call_pageState extends State<call_page> {
           child: (contactList.allContacts.isEmpty)
               ? Container(
             alignment: Alignment.center,
-            child: const Text("No any calls yet"),
+            child:  Text("No any calls yet",
+                style: TextStyle(
+                  color: (Provider.of<ChangeAppThemeProvider>(context).changeAppModel.AppthemeMode)
+                      ? CupertinoColors.white
+                      : CupertinoColors.black,
+                ),
+            ),
           )
               : ListView.builder(
             itemCount: contactList.allContacts.length,

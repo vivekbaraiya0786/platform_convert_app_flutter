@@ -22,11 +22,13 @@ void main() async {
         ChangeNotifierProvider(
           // create: (context) =>  ChangeAppThemeProvider(),
           create: (context) => ChangeAppThemeProvider(
-              changeAppModel: ChangeAppModel(AppthemeMode: apptheme)),
+            changeAppModel: ChangeAppModel(AppthemeMode: apptheme),
+          ),
         ),
         ChangeNotifierProvider(
           create: (context) => ChangeThemeProvider(
-              changethemeModel: ChangeThemeModel(isDark: isdarktheme)),
+            changethemeModel: ChangeThemeModel(isDark: isdarktheme),
+          ),
         ),
         // ChangeNotifierProvider(
         //   create: (context) => SelectedDateProvider(),
@@ -34,35 +36,36 @@ void main() async {
       ],
       builder: (context, child) {
         return (Provider.of<ChangeAppThemeProvider>(context)
-            .changeAppModel
-            .AppthemeMode ==
-            false)
+                    .changeAppModel
+                    .AppthemeMode ==
+                false)
             ? MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: AppTheme.lighttheme,
-          darkTheme: AppTheme.Darktheme,
-          themeMode: (Provider.of<ChangeThemeProvider>(context)
-              .changethemeModel
-              .isDark ==
-              false)
-              ? ThemeMode.light
-              : ThemeMode.dark,
-          routes: {
-            '/': (context) => const homepage(),
-          },
-        )
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.lighttheme,
+                darkTheme: AppTheme.Darktheme,
+                themeMode: (Provider.of<ChangeThemeProvider>(context)
+                            .changethemeModel
+                            .isDark ==
+                        false)
+                    ? ThemeMode.light
+                    : ThemeMode.dark,
+                routes: {
+                  '/': (context) => const homepage(),
+                },
+              )
             : CupertinoApp(
-          theme: MaterialBasedCupertinoThemeData(
-              materialTheme: (Provider.of<ChangeThemeProvider>(context,
-                  listen: false).changethemeModel.isDark)
-                  ?AppTheme.Darktheme
-                  :AppTheme.lighttheme
-          ),
-          debugShowCheckedModeBanner: false,
-          routes: {
-            '/': (ctx) => const homepage(),
-          },
-        );
+                theme: MaterialBasedCupertinoThemeData(
+                    materialTheme: (Provider.of<ChangeThemeProvider>(context,
+                                listen: false)
+                            .changethemeModel
+                            .isDark)
+                        ? AppTheme.Darktheme
+                        : AppTheme.lighttheme),
+                debugShowCheckedModeBanner: false,
+                routes: {
+                  '/': (ctx) => const homepage(),
+                },
+              );
       },
     ),
   );
