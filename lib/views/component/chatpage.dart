@@ -86,11 +86,7 @@ class _chat_pageState extends State<chat_page> {
                                                     .camera);
                                             if (img != null) {
                                               setState(() {
-                                                contactList
-                                                    .allContacts[
-                                                index]
-                                                    .image =
-                                                    File(img.path);
+                                                contactList.allContacts[index].image = File(img.path);
                                               });
                                               Navigator.pop(context);
                                             }
